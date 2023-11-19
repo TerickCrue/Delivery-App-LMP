@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Productos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Banner del negocio -->
+  <ion-img [src]="negocio?.bannerUrl"></ion-img>
+
+  <!-- Detalles del negocio -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>{{ negocio?.nombre }}</ion-card-title>
+      <ion-card-subtitle>{{ negocio?.facultad }}</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <p>{{ negocio?.descripcion }}</p>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Lista de productos -->
+  <ion-card>
+  <ion-list>
+    <ion-item *ngFor="let producto of productos" (click) = "verProducto(producto.id)">
+      <ion-thumbnail slot="start">
+        <ion-img [src]="producto.imagenUrl"></ion-img>
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{ producto.nombre }}</h2>
+        <p>{{ producto.descripcion }}</p>
+        <ion-note>MX${{ producto.precio }}</ion-note>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-card>
+</ion-content>

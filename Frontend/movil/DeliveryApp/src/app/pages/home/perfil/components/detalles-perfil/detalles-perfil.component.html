@@ -1,0 +1,52 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home/perfil"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Editar Perfil</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card >
+    <form [formGroup]="perfilForm" (ngSubmit)="guardarPerfil()">
+      <ion-item>
+        <ion-label position="floating">Nombre</ion-label>
+        <ion-input formControlName="nombre" placeholder = "{{usuarioData?.nombre}}"></ion-input>
+      </ion-item>
+    
+      <ion-item button detail = "true" (click) = "cambiarEmail()">
+        <ion-label>Cambiar Email</ion-label>
+        <ion-label >{{usuarioData?.email}}</ion-label>
+      </ion-item>
+
+      <ion-item button detail = "true" (click) = "cambiarContra()">
+        <ion-label>Contraseña</ion-label>
+      </ion-item>
+    
+      <ion-item>
+        <ion-label position="floating">Teléfono</ion-label>
+        <ion-input formControlName="telefono" placeholder = "{{usuarioData?.telefono}}"></ion-input>
+      </ion-item>
+    
+      <ion-item>
+        <ion-label>Facultad</ion-label>
+        <ion-select formControlName="facultad">
+          <ion-select-option value= 1>FCFM</ion-select-option>
+          <ion-select-option value= 2>FIME</ion-select-option>
+          <ion-select-option value= 3>FACPYA</ion-select-option>
+          <ion-select-option value= 4>FACDYC</ion-select-option>
+          <ion-select-option value= 5>FFyL</ion-select-option>
+          <ion-select-option value= 6>FCB</ion-select-option>
+          <ion-select-option value= 7>FCQ</ion-select-option>
+          <ion-select-option value= 8>FOD</ion-select-option>
+          <ion-select-option value= 9>FIC</ion-select-option>
+          <ion-select-option value= 10>FARQ</ion-select-option>
+          <ion-select-option value= 11>FTSyDH</ion-select-option>
+        </ion-select>
+      </ion-item>
+    
+      <ion-button expand="full" type="submit" [disabled]="!perfilForm.valid">Guardar</ion-button>
+    </form>
+  </ion-card>
+</ion-content>

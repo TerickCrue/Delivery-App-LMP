@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Cambiar Email</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="close()">
+        <ion-icon name="close-circle-outline"></ion-icon>
+        X
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-card>
+    <form [formGroup]="cambioEmailForm" (ngSubmit)="cambiarEmail()">
+      <ion-item>
+        <ion-label position="floating">Nuevo Email</ion-label>
+        <ion-input type = "text" formControlName="nuevoEmail" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Contraseña de la cuenta</ion-label>
+        <ion-input type = "password" formControlName="contra" required></ion-input>
+      </ion-item>
+
+      <ion-button expand = "full" type="submit" [disabled]="!cambioEmailForm.valid">Actualizar Email</ion-button>
+    </form>
+</ion-card>
+</ion-content>

@@ -1,0 +1,69 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>perfil</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+<ion-card>
+
+  <ion-card-header>
+    <ion-card-subtitle>¡Hola!</ion-card-subtitle>
+    <ion-card-title>{{usuario?.nombre}}</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <ion-avatar class = "avatar">
+      <img [src]="usuario?.fotoPerfilUrl" />
+    </ion-avatar>
+    <ion-list>
+      <ion-item button detail="true">
+        <ion-icon name="trophy-outline" slot = "start"></ion-icon>
+        <ion-label>
+          Retos
+        </ion-label>
+      </ion-item>
+      <ion-item button detail="true">
+        <ion-icon name="heart-outline" slot = "start"></ion-icon>
+        <ion-label>
+          Favoritos
+        </ion-label>
+      </ion-item>
+      <ion-item button detail="true">
+        <ion-icon name="help-outline" slot = "start"></ion-icon>
+        <ion-label>
+          Ayuda
+        </ion-label>
+      </ion-item>
+      <ion-item button detail="true">
+        <ion-icon name="chatbubbles-outline" slot = "start"></ion-icon>
+        <ion-label>
+          Comentarios
+        </ion-label>
+      </ion-item>
+      <ion-item button detail="true">
+        <ion-icon name="settings-outline" slot = "start"></ion-icon>
+        <ion-label>
+          Configuración
+        </ion-label>
+      </ion-item>
+      <ion-item button detail="true" (click) = "editarInfo()">
+        <ion-icon name="pencil-outline" slot = "start"></ion-icon>
+        <ion-label>
+          Editar Perfil
+        </ion-label>
+      </ion-item>
+      <ion-item button detail="true" (click) = "cerrarSesion()">
+        <ion-icon name="log-out-outline" slot = "start"></ion-icon>
+        <ion-label>
+          Cerrar sesión
+        </ion-label>
+      </ion-item>
+
+
+    </ion-list>
+
+  </ion-card-content>
+
+</ion-card>
+</ion-content>
+
