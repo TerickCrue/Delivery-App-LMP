@@ -1,0 +1,7 @@
+{
+  "name": "DeliveryApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}

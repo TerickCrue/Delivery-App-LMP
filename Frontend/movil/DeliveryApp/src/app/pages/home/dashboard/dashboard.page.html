@@ -1,0 +1,30 @@
+<ion-header> 
+  <ion-toolbar>
+    <ion-title>Lista de Negocios</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="verCarritos()">
+        <ion-icon name="cart"></ion-icon>
+        Carritos
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" size-md="6" size-lg="4" *ngFor="let negocio of listaNegocios" >
+        <ion-card (click)="verProductos(negocio.id)">
+          <ion-img [src]="negocio.fotoPerfilUrl"></ion-img>
+          <ion-card-header>
+            <ion-card-title>{{ negocio.nombre }}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <p>{{ negocio.descripcion }}</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

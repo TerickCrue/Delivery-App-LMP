@@ -1,0 +1,34 @@
+ion-toolbar {
+    --background:#F2F2F2;
+}
+
+ion-icon {
+    color: #BFBFBF;
+}
+
+ion-action-sheet.rojo .action-sheet-group {
+  background: red;
+}
+
+// Establecer el color de fondo de la hoja de acción
+ion-action-sheet {
+  --background: rgba(255, 255, 255, 0.9);
+}
+
+// Establecer el color del texto de los botones de la hoja de acción
+ion-action-sheet {
+  --button-color: #333;
+  --button-color-hover: #007bff;
+  --button-color-activated: #007bff;
+  --button-background-hover: #007bff;
+  --button-background-activated: #007bff;
+}
+
+// Establecer el color del texto del botón destrutivo
+ion-action-sheet {
+  --destructive-color: #ff3b30;
+  --destructive-color-hover: #fff;
+  --destructive-color-activated: #fff;
+  --destructive-background-hover: #ff3b30;
+  --destructive-background-activated: #ff3b30;
+}

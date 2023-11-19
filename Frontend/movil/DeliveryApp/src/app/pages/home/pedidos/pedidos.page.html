@@ -1,0 +1,92 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Pedidos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Pedidos activos</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-card *ngFor="let pedido of pedidosActivos">
+        <ion-card-header>
+          <ion-button class  = "eliminar" fill="clear" (click) = "eliminarPedido(pedido.id)">
+            <ion-icon name="trash"></ion-icon>
+          </ion-button>
+          <ion-card-title>
+            <ion-item [routerLink]="['/detalle-negocio', pedido.businessId]">
+            <ion-thumbnail class = "imagenNegocio">
+              <ion-img [src]="pedido.imagenNegocio"></ion-img>
+            </ion-thumbnail>
+            <ion-label>
+              <h2>
+                {{ pedido.nombreNegocio }}
+              </h2>
+              <h2>Estado: {{ pedido.status }}</h2>
+            </ion-label>
+          </ion-item>
+          </ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+          <ion-list>
+            <ion-item *ngFor="let producto of pedido.productos">
+              <ion-label>
+              <h2>{{ producto.nombreProducto }}</h2>>
+              <ion-note>Cantidad: {{ producto.cantidad }}</ion-note>
+              <h2>MX${{ producto.precioSubtotal }}</h2>
+              </ion-label>
+              <ion-avatar slot="end">
+                <img [src]="producto.imagenUrl">
+              </ion-avatar>
+            </ion-item>
+          </ion-list>
+
+          <ion-label>Total: MX${{ pedido.total }}</ion-label>
+        </ion-card-content>
+      </ion-card>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Pedidos inactivos</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-card *ngFor="let pedido of pedidosInactivos">
+        <ion-card-header>
+          <ion-card-title>
+            <ion-avatar slot="start">
+              <img [src]="pedido.imagenNegocio" alt="Foto del negocio">
+            </ion-avatar>
+            <ion-router-link [routerLink]="['/detalle-negocio', pedido.businessId]">
+              {{ pedido.nombreNegocio }}
+            </ion-router-link>
+            <ion-label>Estado: {{ pedido.status }}</ion-label>
+          </ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+          <ion-list>
+            <ion-item *ngFor="let producto of pedido.productos">
+              <ion-avatar slot="start">
+                <img [src]="producto.imagenUrl" alt="Foto del producto">
+              </ion-avatar>
+              <ion-label>{{ producto.nombreProducto }}</ion-label>
+              <ion-label>Cantidad: {{ producto.cantidad }}</ion-label>
+              <ion-label>MX${{ producto.precioSubtotal }}</ion-label>
+            </ion-item>
+          </ion-list>
+          <ion-item>
+            <ion-label>Total: MX${{ pedido.total }}</ion-label>
+            <ion-label>Fecha: {{ pedido.fecha }}</ion-label>
+          </ion-item>
+        </ion-card-content>
+      </ion-card>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

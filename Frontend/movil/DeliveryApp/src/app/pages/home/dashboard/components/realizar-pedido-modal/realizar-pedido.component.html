@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Pedido</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="close()">
+        <ion-icon name="close-circle-outline"></ion-icon>
+        X
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <h2>{{ nombreNegocio }}</h2>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label>Dirección de entrega</ion-label>
+          <ion-input [(ngModel)]="direccionEntrega"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Método de pago</ion-label>
+          <ion-select [(ngModel)]="metodoPago">
+            <ion-select-option value="1">Efectivo</ion-select-option>
+            <ion-select-option value="2">Transferencia</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <h3>Total del pedido: MX${{ totalCarrito }}</h3>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button expand="full" (click)="realizarPedido()">Pedir</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  </ion-card>
+</ion-content>
