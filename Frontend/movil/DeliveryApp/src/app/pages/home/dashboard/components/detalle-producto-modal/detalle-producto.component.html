@@ -4,7 +4,6 @@
     <ion-buttons slot="end">
       <ion-button (click)="close()">
         <ion-icon name="close-circle-outline"></ion-icon>
-        X
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
@@ -27,19 +26,19 @@
               <ion-col size="2">
                 <div class="selector-cantidad">
                   <ion-button shape="round" fill="clear" (click)="decrementarCantidad()">
-                    <!-- <ion-icon name="remove"></ion-icon> -->
-                    -
+                    <ion-icon size="large" name="remove-circle-outline"></ion-icon>
                   </ion-button>
                 </div>
               </ion-col>
               <ion-col size="2">
-                <div class="cantidad">{{ cantidad }}</div>
+                <div class="cantidad">
+                  <h2>{{ cantidad }}</h2>
+                </div>
               </ion-col>
               <ion-col size="2">
                 <div class="selector-cantidad">
                   <ion-button shape="round" fill="clear" (click)="incrementarCantidad()">
-                    <!-- <ion-icon name="add"></ion-icon> -->
-                    +
+                    <ion-icon size="large" name="add-circle-outline"></ion-icon>
                   </ion-button>
                 </div>
               </ion-col>

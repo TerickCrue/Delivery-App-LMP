@@ -6,6 +6,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ModalController, ToastController } from '@ionic/angular';
 import { EmailChange } from 'src/app/shared/dtos/gestion-perfil/email-change';
 import { UsuarioService } from 'src/app/shared/http/gestion-usuario/usuario.service';
+import {closeCircleOutline} from 'ionicons/icons'
+import { addIcons } from 'ionicons';
 
 @Component({
   selector: 'app-actualizar-email',
@@ -37,7 +39,7 @@ export class ActualizarEmailComponent  implements OnInit {
     private modalCtrl: ModalController,
     private toastController: ToastController
   ) { 
-
+    addIcons({closeCircleOutline})
     this.cambioEmailForm = this.formBuilder.group({
       nuevoEmail: ['', Validators.required],
       contra: ['', Validators.required]

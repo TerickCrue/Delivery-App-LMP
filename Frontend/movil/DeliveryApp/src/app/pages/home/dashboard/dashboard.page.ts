@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { Router, RouterModule} from '@angular/router';
 import { NegocioService } from 'src/app/shared/http/gestion-negocio/negocio.service';
+import {cart} from 'ionicons/icons'
+import { addIcons } from 'ionicons';
 
 @Component({
   selector: 'app-dashboard',
@@ -18,7 +20,7 @@ export class DashboardPage implements OnInit {
 
   listaNegocios: any[] = [];
 
-  constructor(private negocioService: NegocioService, private router: Router) {}
+  constructor(private negocioService: NegocioService, private router: Router) { addIcons({cart})}
 
   
   ngOnInit() {

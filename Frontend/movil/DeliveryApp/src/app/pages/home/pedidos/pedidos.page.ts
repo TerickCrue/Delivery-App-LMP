@@ -7,6 +7,8 @@ import { PedidoResponse } from 'src/app/shared/dtos/gestion-pedido/pedido-respon
 import { PedidoRequest } from 'src/app/shared/dtos/gestion-pedido/pedido-request';
 import { PedidoService } from 'src/app/shared/http/gestion-negocio/pedido.service';
 import { RouterLink, RouterModule } from '@angular/router';
+import {trash} from 'ionicons/icons'
+import { addIcons } from 'ionicons';
 
 @Component({
   selector: 'app-pedidos',
@@ -29,7 +31,7 @@ export class PedidosPage implements OnInit {
   constructor(
     private pedidoService: PedidoService,
     private toastController: ToastController
-  ) { }
+  ) { addIcons({trash})}
 
   ngOnInit() {
     this.getPedidos(this.usuarioId);

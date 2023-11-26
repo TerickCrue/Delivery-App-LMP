@@ -49,9 +49,7 @@ export class LoginPage implements OnInit {
         console.log(response);
         localStorage.setItem('token', response.token);
         localStorage.setItem('userId', response.id);
-
-
-
+        
         // Redirigir a la página de inicio
         this.router.navigate(['/home'])
       },

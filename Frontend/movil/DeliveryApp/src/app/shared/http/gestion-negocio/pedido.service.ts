@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment.prod';
+import { environment } from 'src/environments/environment';
 import { PedidoResponse } from '../../dtos/gestion-pedido/pedido-response';
 
 @Injectable({
@@ -9,7 +9,6 @@ import { PedidoResponse } from '../../dtos/gestion-pedido/pedido-response';
 })
 export class PedidoService {
 
-  //private apiUrl = 'https://localhost:7126/api/pedido';
   private apiUrl = `${environment.baseUrl}/pedido`;
 
   constructor(private http: HttpClient) {}

@@ -6,7 +6,8 @@ import { ModalController } from '@ionic/angular';
 import { PedidoRequest } from 'src/app/shared/dtos/gestion-pedido/pedido-request';
 import { PedidoService } from 'src/app/shared/http/gestion-negocio/pedido.service';
 import { FormsModule } from '@angular/forms';
-
+import {closeCircleOutline} from 'ionicons/icons'
+import { addIcons } from 'ionicons';
 
 @Component({
   selector: 'app-realizar-pedido',
@@ -37,7 +38,7 @@ export class RealizarPedidoComponent  implements OnInit {
     private pedidoService: PedidoService,
     private modalCtrl: ModalController,
     private router: Router
-  ) { }
+  ) { addIcons({closeCircleOutline})}
 
   ngOnInit() {}
 

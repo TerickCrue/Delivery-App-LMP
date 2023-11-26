@@ -5,6 +5,8 @@ import { IonicModule } from '@ionic/angular';
 import { UsuarioService } from 'src/app/shared/http/gestion-usuario/usuario.service';
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from 'src/app/auth/auth.service';
+import { trophyOutline, heartOutline, helpOutline, chatbubblesOutline, settingsOutline, pencilOutline, logOutOutline } from 'ionicons/icons'
+import { addIcons } from 'ionicons';
 
 @Component({
   selector: 'app-perfil',
@@ -22,7 +24,15 @@ export class PerfilPage implements OnInit {
     private usuarioService: UsuarioService,
     private router: Router,
     private authService: AuthService
-  ) { }
+  ){ addIcons({
+      trophyOutline, 
+      heartOutline, 
+      helpOutline, 
+      chatbubblesOutline, 
+      settingsOutline, 
+      pencilOutline, 
+      logOutOutline})
+    }
 
   ngOnInit() {
     this.obtenerInfoUsuario();
