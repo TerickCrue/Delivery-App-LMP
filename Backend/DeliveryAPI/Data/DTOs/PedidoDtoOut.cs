@@ -28,7 +28,7 @@ namespace DeliveryAPI.Data.DTOs
 
         public string Status { get; set; } = null!;
 
-        public int CarritoId { get; set; }
+        public int? CarritoId { get; set; }
         public List<CarritoProductoDtoOut> Productos { get; set; }
     }
 }

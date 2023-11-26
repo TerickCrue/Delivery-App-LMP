@@ -6,6 +6,8 @@ import { ModalController, ToastController } from '@ionic/angular';
 import { PasswordChange } from 'src/app/shared/dtos/gestion-perfil/password-change';
 import { UsuarioService } from 'src/app/shared/http/gestion-usuario/usuario.service';
 import { ReactiveFormsModule } from '@angular/forms';
+import {closeCircleOutline} from 'ionicons/icons'
+import { addIcons } from 'ionicons';
 
 @Component({
   selector: 'app-actualizar-password',
@@ -36,6 +38,7 @@ export class ActualizarPasswordComponent  implements OnInit {
     private modalCtrl: ModalController,
     private toastController: ToastController
   ) {
+    addIcons({closeCircleOutline})
 
     this.cambioContrasenaForm = this.formBuilder.group({
       contraActual: ['', Validators.required],

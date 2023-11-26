@@ -3,13 +3,14 @@
     text-align: center;
 }
 .selector-cantidad{
+    align-items: center;
+    
     ion-button {
-      
         --color: blue;
         --border-style: solid;
-        --border-width: 1px;
-        --padding-start: 20px;
-        --padding-end: 20px;
+        --border-width: 0px;
+        //--padding-start: 20px;
+        //--padding-end: 20px;
         /*--border-color: #000;
         
       

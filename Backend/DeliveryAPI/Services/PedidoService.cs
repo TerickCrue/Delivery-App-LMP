@@ -8,10 +8,10 @@ namespace DeliveryAPI.Services;
 
 public class PedidoService
 {
-    private readonly PiaAppMovContext _context;
+    private readonly PIA_AppMovContext _context;
     private readonly CarritoService _carritoService;
 
-    public PedidoService(PiaAppMovContext context, CarritoService carritoService)
+    public PedidoService(PIA_AppMovContext context, CarritoService carritoService)
     {
         _context = context;
         _carritoService = carritoService;
@@ -39,7 +39,7 @@ public class PedidoService
         foreach(var p in pedidos)
         {
 
-            p.Productos = await _carritoService.GetProductosDtoEnCarrito(p.CarritoId);
+            p.Productos = await _carritoService.GetProductosDtoEnCarrito(p.CarritoId ?? 0);
         }
 
         return pedidos;
@@ -75,7 +75,7 @@ public class PedidoService
 
             }).SingleOrDefaultAsync();
 
-        pedido.Productos = await _carritoService.GetProductosDtoEnCarrito(pedido.CarritoId);
+        pedido.Productos = await _carritoService.GetProductosDtoEnCarrito(pedido.CarritoId ?? 0);
 
         return pedido;
 
@@ -104,7 +104,7 @@ public class PedidoService
 
         foreach (var p in pedidos)
         {
-            p.Productos = await _carritoService.GetProductosDtoEnCarrito(p.CarritoId);
+            p.Productos = await _carritoService.GetProductosDtoEnCarrito(p.CarritoId ?? 0);
         }
 
         return pedidos;
@@ -133,7 +133,7 @@ public class PedidoService
 
         foreach (var p in pedidos)
         {
-            p.Productos = await _carritoService.GetProductosDtoEnCarrito(p.CarritoId);
+            p.Productos = await _carritoService.GetProductosDtoEnCarrito(p.CarritoId ?? 0);
         }
 
         return pedidos;

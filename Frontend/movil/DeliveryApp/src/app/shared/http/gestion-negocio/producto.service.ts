@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment.prod';
+import { environment } from 'src/environments/environment';
 import { Producto } from '../../dtos/gestion-producto/producto';
 
 @Injectable({
@@ -9,7 +9,6 @@ import { Producto } from '../../dtos/gestion-producto/producto';
 })
 export class ProductoService {
 
-  //private apiUrl = 'https://localhost:7126/api/producto';
   private apiUrl = `${environment.baseUrl}/producto`;
 
   constructor(private http: HttpClient) { }

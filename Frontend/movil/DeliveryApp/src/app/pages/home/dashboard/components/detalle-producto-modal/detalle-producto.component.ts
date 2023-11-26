@@ -7,6 +7,8 @@ import { ToastController } from '@ionic/angular';
 import { CarritoService } from 'src/app/shared/http/gestion-negocio/carrito.service';
 import { CarritoProductoRequest } from 'src/app/shared/dtos/gestion-carritos/carrito-producto-request';
 import { ProductoService } from 'src/app/shared/http/gestion-negocio/producto.service';
+import {closeCircleOutline, addCircleOutline, removeCircleOutline} from 'ionicons/icons'
+import { addIcons } from 'ionicons';
 
 @Component({
   selector: 'app-detalle-producto',
@@ -35,7 +37,7 @@ export class DetalleProductoComponent  implements OnInit {
     private carritoService: CarritoService,
     private productoService: ProductoService,
     private toastController: ToastController
-  ) { }
+  ) { addIcons({closeCircleOutline, addCircleOutline, removeCircleOutline})}
 
     ngOnInit() {
       this.obtenerProducto();

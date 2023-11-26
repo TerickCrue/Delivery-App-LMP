@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import { IonicModule, ModalController } from '@ionic/angular';
 import { CarritoService } from 'src/app/shared/http/gestion-negocio/carrito.service';
 import { RealizarPedidoComponent } from '../realizar-pedido-modal/realizar-pedido.component';
+import {trash} from 'ionicons/icons'
+import { addIcons } from 'ionicons';
 
 @Component({
   selector: 'app-carritos',
@@ -28,7 +30,7 @@ export class CarritosComponent  implements OnInit {
     private router: Router,
     private modalCtrl: ModalController,
 
-  ) { }
+  ) { addIcons({trash}) }
 
   ngOnInit() {
     this.obtenerCarritos();

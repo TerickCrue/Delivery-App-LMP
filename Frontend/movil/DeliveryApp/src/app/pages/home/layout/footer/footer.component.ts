@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
+import { addIcons } from 'ionicons';
+import { person, home, clipboard } from 'ionicons/icons';
 
 @Component({
   selector: 'app-footer',
@@ -11,7 +13,9 @@ import { IonicModule } from '@ionic/angular';
 })
 export class FooterComponent  implements OnInit {
 
-  constructor() { }
+  constructor() { 
+    addIcons({ person, home, clipboard});
+  }
 
   ngOnInit() {}
 
