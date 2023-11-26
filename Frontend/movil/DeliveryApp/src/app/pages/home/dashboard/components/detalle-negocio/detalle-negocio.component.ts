@@ -82,7 +82,6 @@ export class DetalleNegocioComponent  implements OnInit {
         negocioId: this.negocioId
       }
     });
-    console.error(productoId);
     return await modal.present();
   }
 

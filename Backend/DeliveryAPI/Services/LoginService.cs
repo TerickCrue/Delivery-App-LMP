@@ -13,10 +13,10 @@ namespace DeliveryAPI.Services;
 public class LoginService
 {
 
-    private readonly PiaAppMovContext _context;
+    private readonly PIA_AppMovContext _context;
     private IConfiguration config;
 
-    public LoginService(PiaAppMovContext context, IConfiguration config)
+    public LoginService(PIA_AppMovContext context, IConfiguration config)
     {
         _context = context;
         this.config = config;

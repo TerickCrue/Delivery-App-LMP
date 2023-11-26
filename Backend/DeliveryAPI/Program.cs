@@ -14,9 +14,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 
 //DB context
-builder.Services.AddDbContext<PiaAppMovContext>(
-    options => options.UseNpgsql(builder.Configuration.GetConnectionString("DeliveryDBConnection"))
-);
+builder.Services.AddSqlServer<PIA_AppMovContext>(builder.Configuration.GetConnectionString("DeliveryDBConnection"));
 
 //Services
 builder.Services.AddScoped<UsuarioService>();

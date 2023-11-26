@@ -8,9 +8,9 @@ namespace DeliveryAPI.Services;
 
 public class ProductoService
 {
-    private readonly PiaAppMovContext _context;
+    private readonly PIA_AppMovContext _context;
 
-    public ProductoService(PiaAppMovContext context)
+    public ProductoService(PIA_AppMovContext context)
     {
         _context = context;
     }

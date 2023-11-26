@@ -10,10 +10,10 @@ namespace DeliveryAPI.Services;
 
 public class UsuarioService
 {
-    private readonly PiaAppMovContext _context;
+    private readonly PIA_AppMovContext _context;
     private readonly LoginService _loginService;
 
-    public UsuarioService(PiaAppMovContext context, LoginService loginService)
+    public UsuarioService(PIA_AppMovContext context, LoginService loginService)
     {
         _context = context;
         _loginService = loginService;

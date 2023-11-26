@@ -10,10 +10,10 @@ public class CarritoService
 {
 
 
-    private readonly PiaAppMovContext _context;
+    private readonly PIA_AppMovContext _context;
     private readonly ProductoService _productoService;
 
-    public CarritoService(PiaAppMovContext context, ProductoService productoService)
+    public CarritoService(PIA_AppMovContext context, ProductoService productoService)
     {
         _context = context;
         _productoService = productoService;
@@ -192,7 +192,7 @@ public class CarritoService
         
         carritoProducto.CartId = carritoId;
         carritoProducto.ProductId = productoIngresado.ProductoId;
-        carritoProducto.Cantidad = productoIngresado.Cantidad;
+        carritoProducto.Cantidad = productoIngresado.Cantidad ?? 0;
         carritoProducto.PrecioSubtotal = subtotal;
 
 
@@ -227,7 +227,7 @@ public class CarritoService
 
         if (carritoProducto is not null)
         {
-            carritoProducto.Cantidad = carritoProductoDto.Cantidad;
+            carritoProducto.Cantidad = carritoProductoDto.Cantidad ?? 0;
             carritoProducto.PrecioSubtotal = carritoProductoDto.Cantidad * precio;
             await _context.SaveChangesAsync();
         }
