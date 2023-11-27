@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { IonicModule, ModalController } from '@ionic/angular';
-import { CarritoService } from 'src/app/shared/http/gestion-negocio/carrito.service';
+import { CarritoService } from 'src/app/shared/services/http/gestion-negocio/carrito.service';
 import { RealizarPedidoComponent } from '../realizar-pedido-modal/realizar-pedido.component';
 import {trash} from 'ionicons/icons'
 import { addIcons } from 'ionicons';

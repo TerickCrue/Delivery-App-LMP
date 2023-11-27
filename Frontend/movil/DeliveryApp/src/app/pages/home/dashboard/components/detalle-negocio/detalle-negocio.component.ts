@@ -6,8 +6,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { Producto } from 'src/app/shared/dtos/gestion-producto/producto';
-import { ProductoService } from 'src/app/shared/http/gestion-negocio/producto.service';
-import { NegocioService } from 'src/app/shared/http/gestion-negocio/negocio.service';
+import { ProductoService } from 'src/app/shared/services/http/gestion-negocio/producto.service';
+import { NegocioService } from 'src/app/shared/services/http/gestion-negocio/negocio.service';
 import { DetalleProductoComponent } from '../detalle-producto-modal/detalle-producto.component';
 
 

@@ -5,7 +5,7 @@ import { IonicModule } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
 import { PedidoResponse } from 'src/app/shared/dtos/gestion-pedido/pedido-response';
 import { PedidoRequest } from 'src/app/shared/dtos/gestion-pedido/pedido-request';
-import { PedidoService } from 'src/app/shared/http/gestion-negocio/pedido.service';
+import { PedidoService } from 'src/app/shared/services/http/gestion-negocio/pedido.service';
 import { RouterLink, RouterModule } from '@angular/router';
 import {trash} from 'ionicons/icons'
 import { addIcons } from 'ionicons';

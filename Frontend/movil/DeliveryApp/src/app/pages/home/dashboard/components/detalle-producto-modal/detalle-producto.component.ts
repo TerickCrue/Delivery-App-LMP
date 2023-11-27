@@ -4,9 +4,9 @@ import { IonicModule } from '@ionic/angular';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ModalController, NavParams } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
-import { CarritoService } from 'src/app/shared/http/gestion-negocio/carrito.service';
+import { CarritoService } from 'src/app/shared/services/http/gestion-negocio/carrito.service';
 import { CarritoProductoRequest } from 'src/app/shared/dtos/gestion-carritos/carrito-producto-request';
-import { ProductoService } from 'src/app/shared/http/gestion-negocio/producto.service';
+import { ProductoService } from 'src/app/shared/services/http/gestion-negocio/producto.service';
 import {closeCircleOutline, addCircleOutline, removeCircleOutline} from 'ionicons/icons'
 import { addIcons } from 'ionicons';
 

@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { Router, RouterModule} from '@angular/router';
-import { NegocioService } from 'src/app/shared/http/gestion-negocio/negocio.service';
+import { NegocioService } from 'src/app/shared/services/http/gestion-negocio/negocio.service';
 import {cart} from 'ionicons/icons'
 import { addIcons } from 'ionicons';
 

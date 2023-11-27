@@ -5,7 +5,7 @@ import { IonicModule } from '@ionic/angular';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ModalController, ToastController } from '@ionic/angular';
 import { EmailChange } from 'src/app/shared/dtos/gestion-perfil/email-change';
-import { UsuarioService } from 'src/app/shared/http/gestion-usuario/usuario.service';
+import { UsuarioService } from 'src/app/shared/services/http/gestion-usuario/usuario.service';
 import {closeCircleOutline} from 'ionicons/icons'
 import { addIcons } from 'ionicons';
 
