@@ -1,11 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
-import { UsuarioService } from 'src/app/shared/http/gestion-usuario/usuario.service';
+import { UsuarioService } from 'src/app/shared/services/http/gestion-usuario/usuario.service';
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from 'src/app/auth/auth.service';
-import { trophyOutline, heartOutline, helpOutline, chatbubblesOutline, settingsOutline, pencilOutline, logOutOutline } from 'ionicons/icons'
+import { trophyOutline, 
+  heartOutline, 
+  helpOutline, 
+  chatbubblesOutline, 
+  settingsOutline, 
+  pencilOutline, 
+  logOutOutline,
+} from 'ionicons/icons'
 import { addIcons } from 'ionicons';
 
 @Component({
@@ -31,11 +38,12 @@ export class PerfilPage implements OnInit {
       chatbubblesOutline, 
       settingsOutline, 
       pencilOutline, 
-      logOutOutline})
+      logOutOutline,})
     }
 
   ngOnInit() {
     this.obtenerInfoUsuario();
+
   }
 
   ionViewWillEnter(){

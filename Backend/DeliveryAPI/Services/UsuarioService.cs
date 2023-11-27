@@ -36,7 +36,8 @@ public class UsuarioService
             Email = u.Email,
             FacultadNombre = u.Facultad.Nombre,
             FotoPerfilUrl = u.FotoPerfilUrl,
-            Telefono = u.Telefono
+            Telefono = u.Telefono,
+            FacultadId = u.FacultadId,
         }).SingleOrDefaultAsync();
 
     }
@@ -66,6 +67,7 @@ public class UsuarioService
             existingUser.Nombre = usuario.Nombre;
             existingUser.Telefono = usuario.Telefono;
             existingUser.FacultadId = usuario.FacultadId;
+            existingUser.FotoPerfilUrl = usuario.FotoPerfilUrl;
 
             await _context.SaveChangesAsync();
 

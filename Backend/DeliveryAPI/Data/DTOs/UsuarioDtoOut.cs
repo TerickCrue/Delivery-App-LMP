@@ -8,6 +8,8 @@
 
         public string? Telefono { get; set; }
 
+        public int? FacultadId { get; set; }
+
         public string? FacultadNombre { get; set; }
 
         public string? FotoPerfilUrl { get; set; }
