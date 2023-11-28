@@ -13,10 +13,7 @@
   </ion-card-header>
 
   <ion-card-content>
-    <!-- <ion-avatar class = "avatar">
-      <img [src]="usuario?.fotoPerfilUrl" />
-    </ion-avatar> -->
-
+    
     <!--Si el usuario tiene imagen-->
     <ion-avatar *ngIf="!usuario?.fotoPerfilUrl" class = "avatar">
       <img src="https://ionicframework.com/docs/img/demos/avatar.svg" />
@@ -72,7 +69,6 @@
       </ion-item>
     </ion-list>
   </ion-card-content>
-
 </ion-card>
 </ion-content>
 

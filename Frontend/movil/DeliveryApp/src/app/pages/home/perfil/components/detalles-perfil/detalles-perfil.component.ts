@@ -124,7 +124,7 @@ export class DetallesPerfilComponent  implements OnInit {
 
   async subirFotoDePerfil(){
     let dataUrl = this.fotoPerfilUrl;
-    let imagePath = `${this.usuarioId}/${Date.now()}`;
+    let imagePath = `users/${this.usuarioId}/${Date.now()}`;
     let imageUrl = await this.firebaseService.uploadImage(imagePath, dataUrl);
     this.usuarioData.fotoPerfilUrl = imageUrl;
   }

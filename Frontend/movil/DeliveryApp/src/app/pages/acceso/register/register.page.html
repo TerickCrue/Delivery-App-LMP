@@ -1,58 +1,53 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="back"></ion-back-button>
-    </ion-buttons>
-    <ion-title>
-      Register
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
   <div class="background-image"></div>
   <div class="content">
     <ion-card>
-      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-        <ion-item>
-          <ion-label position="floating">Nombre</ion-label>
-          <ion-input type="text" formControlName="nombre"></ion-input>
-        </ion-item>
+      <ion-card-header>
+        <ion-card-title>Regístrate</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+          <ion-item>
+            <ion-label position="floating">Nombre</ion-label>
+            <ion-input type="text" formControlName="nombre"></ion-input>
+          </ion-item>
 
-        <ion-item>
-          <ion-label position="floating">Email</ion-label>
-          <ion-input type="email" formControlName="email"></ion-input>
-        </ion-item>
+          <ion-item>
+            <ion-input labelPlacement="floating" label="Email" errorText="Ingrese un Email válido" email type="email" formControlName="email"></ion-input>
+          </ion-item>
 
-        <ion-item>
-          <ion-label position="floating">Teléfono</ion-label>
-          <ion-input formControlName="telefono"></ion-input>
-        </ion-item>
+          <ion-item>
+            <ion-label position="floating">Teléfono</ion-label>
+            <ion-input formControlName="telefono"></ion-input>
+          </ion-item>
 
-        <ion-item>
-          <ion-label>Facultad</ion-label>
-          <ion-select formControlName="facultadId">
-            <ion-select-option value= 1>FCFM</ion-select-option>
-            <ion-select-option value= 2>FIME</ion-select-option>
-            <ion-select-option value= 3>FACPYA</ion-select-option>
-            <ion-select-option value= 4>FACDYC</ion-select-option>
-            <ion-select-option value= 5>FFyL</ion-select-option>
-            <ion-select-option value= 6>FCB</ion-select-option>
-            <ion-select-option value= 7>FCQ</ion-select-option>
-            <ion-select-option value= 8>FOD</ion-select-option>
-            <ion-select-option value= 9>FIC</ion-select-option>
-            <ion-select-option value= 10>FARQ</ion-select-option>
-            <ion-select-option value= 11>FTSyDH</ion-select-option>
-          </ion-select>
-        </ion-item>
+          <ion-item>
+            <ion-label>Facultad</ion-label>
+            <ion-select formControlName="facultadId">
+              <ion-select-option value= 1>FCFM</ion-select-option>
+              <ion-select-option value= 2>FIME</ion-select-option>
+              <ion-select-option value= 3>FACPYA</ion-select-option>
+              <ion-select-option value= 4>FACDYC</ion-select-option>
+              <ion-select-option value= 5>FFyL</ion-select-option>
+              <ion-select-option value= 6>FCB</ion-select-option>
+              <ion-select-option value= 7>FCQ</ion-select-option>
+              <ion-select-option value= 8>FOD</ion-select-option>
+              <ion-select-option value= 9>FIC</ion-select-option>
+              <ion-select-option value= 10>FARQ</ion-select-option>
+              <ion-select-option value= 11>FTSyDH</ion-select-option>
+            </ion-select>
+          </ion-item>
 
-        <ion-item>
-          <ion-label position="floating">Contraseña</ion-label>
-          <ion-input type="password" formControlName="contraseña"></ion-input>
-        </ion-item>
+          <ion-item>
+            <ion-label position="floating">Contraseña</ion-label>
+            <ion-input type="password" formControlName="contraseña"></ion-input>
+          </ion-item>
 
-        <ion-button type="submit" expand="full" [disabled]="registerForm.invalid">Registrarse</ion-button>
-      </form>
+          <ion-button shape="round" type="submit" expand="full" [disabled]="registerForm.invalid">Registrarse</ion-button>
+        </form>
+      </ion-card-content>
+      <div class="link-login"><a routerLink="/acceso/login">Iniciar sesión</a></div>
     </ion-card>
+    
   </div>
 </ion-content>

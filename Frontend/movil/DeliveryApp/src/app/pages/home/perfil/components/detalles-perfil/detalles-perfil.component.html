@@ -8,72 +8,67 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <div *ngIf="usuarioData">
-  <ion-card>
-    <ion-card-content>
-      
-      <div class="container">
-        <div class="outer">
-          <!--El usuario tiene imagen-->
-          <ion-avatar *ngIf="!usuarioData?.fotoPerfilUrl && !fotoCambiada">
-            <img src="https://ionicframework.com/docs/img/demos/avatar.svg" />
-          </ion-avatar>
-          <!--Si el usuario NO tiene imagen-->
-          <ion-avatar *ngIf="usuarioData?.fotoPerfilUrl && !fotoCambiada">
-            <img [src]="usuarioData?.fotoPerfilUrl" />
-          </ion-avatar>
-          <!--El usuario acaba de cambiar de imagen-->
-          <ion-avatar *ngIf="fotoCambiada">
-            <img [src]="fotoPerfilUrl" />
-          </ion-avatar>
-          <div class="inner">
-            <ion-button class="editar-foto" (click)="takeImage()">
-              <ion-icon slot="icon-only" name="camera-outline"></ion-icon>
-            </ion-button>
-          </div>
+  <div class="contenedor" *ngIf="usuarioData">
+    <div class="profile-pic-container">
+      <div class="outer">
+        <!--El usuario tiene imagen-->
+        <ion-avatar *ngIf="!usuarioData?.fotoPerfilUrl && !fotoCambiada">
+          <img src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+        </ion-avatar>
+        <!--Si el usuario NO tiene imagen-->
+        <ion-avatar *ngIf="usuarioData?.fotoPerfilUrl && !fotoCambiada">
+          <img [src]="usuarioData?.fotoPerfilUrl" />
+        </ion-avatar>
+        <!--El usuario acaba de cambiar de imagen-->
+        <ion-avatar *ngIf="fotoCambiada">
+          <img [src]="fotoPerfilUrl" />
+        </ion-avatar>
+        <div class="inner">
+          <ion-button class="editar-foto" (click)="takeImage()">
+            <ion-icon slot="icon-only" name="camera-outline"></ion-icon>
+          </ion-button>
         </div>
       </div>
+    </div>
 
-      <form [formGroup]="perfilForm" (ngSubmit)="guardarPerfil()">
-        <ion-item>
-          <ion-label position="floating">Nombre</ion-label>
-          <ion-input [(ngModel)]="usuarioData.nombre" formControlName="nombre" placeholder = "{{usuarioData?.nombre}}"></ion-input>
-        </ion-item>
-      
-        <ion-item button detail = "true" (click) = "cambiarEmail()">
-          <ion-label>Cambiar Email</ion-label>
-          <ion-label >{{usuarioData?.email}}</ion-label>
-        </ion-item>
+    <form [formGroup]="perfilForm" (ngSubmit)="guardarPerfil()">
+      <ion-item>
+        <ion-label position="floating">Nombre</ion-label>
+        <ion-input [(ngModel)]="usuarioData.nombre" formControlName="nombre" placeholder = "{{usuarioData?.nombre}}"></ion-input>
+      </ion-item>
+    
+      <ion-item button detail = "true" (click) = "cambiarEmail()">
+        <ion-label>Cambiar Email</ion-label>
+        <ion-label >{{usuarioData?.email}}</ion-label>
+      </ion-item>
 
-        <ion-item button detail = "true" (click) = "cambiarContra()">
-          <ion-label>Contraseña</ion-label>
-        </ion-item>
-      
-        <ion-item>
-          <ion-label position="floating">Teléfono</ion-label>
-          <ion-input [(ngModel)]="usuarioData.telefono" formControlName="telefono" placeholder = "{{usuarioData?.telefono}}"></ion-input>
-        </ion-item>
-      
-        <ion-item>
-          <ion-label>Facultad</ion-label>
-          <ion-select [(ngModel)]="usuarioData.facultadId" formControlName="facultad">
-            <ion-select-option value=1>FCFM</ion-select-option>
-            <ion-select-option value=2>FIME</ion-select-option>
-            <ion-select-option value=3>FACPYA</ion-select-option>
-            <ion-select-option value=4>FACDYC</ion-select-option>
-            <ion-select-option value=5>FFyL</ion-select-option>
-            <ion-select-option value=6>FCB</ion-select-option>
-            <ion-select-option value=7>FCQ</ion-select-option>
-            <ion-select-option value=8>FOD</ion-select-option>
-            <ion-select-option value=9>FIC</ion-select-option>
-            <ion-select-option value=10>FARQ</ion-select-option>
-            <ion-select-option value=11>FTSyDH</ion-select-option>
-          </ion-select>
-        </ion-item>
-      
-        <ion-button expand="full" type="submit" [disabled]="!perfilForm.valid">Guardar</ion-button>
-      </form>
-    </ion-card-content>
-  </ion-card>
+      <ion-item button detail = "true" (click) = "cambiarContra()">
+        <ion-label>Contraseña</ion-label>
+      </ion-item>
+    
+      <ion-item>
+        <ion-label position="floating">Teléfono</ion-label>
+        <ion-input [(ngModel)]="usuarioData.telefono" formControlName="telefono" placeholder = "{{usuarioData?.telefono}}"></ion-input>
+      </ion-item>
+    
+      <ion-item>
+        <ion-label>Facultad</ion-label>
+        <ion-select [(ngModel)]="usuarioData.facultadId" formControlName="facultad">
+          <ion-select-option value=1>FCFM</ion-select-option>
+          <ion-select-option value=2>FIME</ion-select-option>
+          <ion-select-option value=3>FACPYA</ion-select-option>
+          <ion-select-option value=4>FACDYC</ion-select-option>
+          <ion-select-option value=5>FFyL</ion-select-option>
+          <ion-select-option value=6>FCB</ion-select-option>
+          <ion-select-option value=7>FCQ</ion-select-option>
+          <ion-select-option value=8>FOD</ion-select-option>
+          <ion-select-option value=9>FIC</ion-select-option>
+          <ion-select-option value=10>FARQ</ion-select-option>
+          <ion-select-option value=11>FTSyDH</ion-select-option>
+        </ion-select>
+      </ion-item>
+    
+      <ion-button style="margin-top: 30%;" shape="round" expand="full" type="submit" [disabled]="!perfilForm.valid">Guardar</ion-button>
+    </form>
   </div>
 </ion-content>

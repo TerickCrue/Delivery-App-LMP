@@ -12,12 +12,27 @@
   <ion-card>
     <form [formGroup]="cambioEmailForm" (ngSubmit)="cambiarEmail()">
       <ion-item>
-        <ion-label position="floating">Nuevo Email</ion-label>
-        <ion-input type = "text" formControlName="nuevoEmail" required></ion-input>
+        <ion-input 
+          labelPlacement="floating" 
+          label="Nuevo Email" 
+          type ="email"
+          email 
+          helperText="Ingresa un email válido"
+          errorText="Email inválido" 
+          formControlName="nuevoEmail" 
+          required
+          [ngModel]="userEmail"
+          >
+        </ion-input>
       </ion-item>
       <ion-item>
-        <ion-label position="floating">Contraseña de la cuenta</ion-label>
-        <ion-input type = "password" formControlName="contra" required></ion-input>
+        <ion-input 
+          type = "password"
+          label="Contraseña de la cuenta"
+          labelPlacement="floating"
+          helperText="Ingrese su contraseña actual" 
+          formControlName="contra" 
+          required></ion-input>
       </ion-item>
 
       <ion-button expand = "full" type="submit" [disabled]="!cambioEmailForm.valid">Actualizar Email</ion-button>
