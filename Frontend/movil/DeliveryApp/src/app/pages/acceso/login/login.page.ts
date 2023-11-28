@@ -4,14 +4,16 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { IonicModule, ToastController } from '@ionic/angular';
 import { UserLogin } from 'src/app/shared/dtos/seguridad/user-login';
 import { AuthService } from 'src/app/auth/auth.service';
-import { Router} from '@angular/router';
+import { Router, RouterLink} from '@angular/router';
+import { LoginService } from 'src/app/shared/services/http/seguridad/login.service';
+import { StorageService } from 'src/app/shared/services/storage.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule, ReactiveFormsModule],
+  imports: [IonicModule, CommonModule, FormsModule, ReactiveFormsModule, RouterLink],
   providers : [ AuthService ]
 })
 export class LoginPage implements OnInit {
@@ -21,7 +23,9 @@ export class LoginPage implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private authService: AuthService,
+    //private authService: AuthService,
+    private storageService: StorageService,
+    private loginService: LoginService,
     private router: Router,
     private toastController: ToastController
   ) { }
@@ -44,11 +48,13 @@ export class LoginPage implements OnInit {
   }
 
   Autenticar(datos: UserLogin){
-    this.authService.login(datos).subscribe(
+    this.loginService.login(datos).subscribe(
       (response: any) => {
         console.log(response);
-        localStorage.setItem('token', response.token);
-        localStorage.setItem('userId', response.id);
+        this.storageService.set('userToken', response.token);
+        this.storageService.set('userId', response.id);
+        //localStorage.setItem('token', response.token);
+        //localStorage.setItem('userId', response.id);
         
         // Redirigir a la página de inicio
         this.router.navigate(['/home'])

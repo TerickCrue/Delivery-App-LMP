@@ -8,23 +8,25 @@ export class StorageService {
 
   constructor() { }
 
-  async create (key: string, value: any){
-    await Preferences.set({key, value})
+
+  public async read(key: string) {
+    return (
+        (await Preferences.get({key})).value
+    );
   }
 
-  async read (key: string){
-    return await Preferences.get({key})
+  public async set(key: string, value:any) {
+      await Preferences.set({
+          key: key,
+          value: value
+      });
   }
 
-  async update (key: string, value: any){
-    await Preferences.set({key, value})
+  public async remove(key:string) {
+      await Preferences.remove({key});
   }
 
-  async delete (key: string){
-    await Preferences.remove({key})
-  }
-
-  async clear (){
+  public async clear (){
     await Preferences.clear();
   }
 

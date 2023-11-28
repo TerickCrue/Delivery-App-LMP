@@ -9,6 +9,8 @@ import { PedidoService } from 'src/app/shared/services/http/gestion-negocio/pedi
 import { RouterLink, RouterModule } from '@angular/router';
 import {trash} from 'ionicons/icons'
 import { addIcons } from 'ionicons';
+import { format } from 'date-fns'
+import { StorageService } from 'src/app/shared/services/storage.service';
 
 @Component({
   selector: 'app-pedidos',
@@ -19,32 +21,53 @@ import { addIcons } from 'ionicons';
 })
 export class PedidosPage implements OnInit {
   
-  usuarioId = parseInt(localStorage.getItem('userId') || '', 10);
+  usuarioId: number; //= parseInt(localStorage.getItem('userId') || '', 10);
 
   pedidos: PedidoResponse[] = [];
   pedidosActivos: PedidoResponse[] = [];
   pedidosInactivos: PedidoResponse[] = [];
+  loaded: boolean = false;
 
   pedido: PedidoRequest = { userId: 0, businessId: 0, carritoId: 0, 
     direccionEntrega: '', metodopagoId: 0, total: 0, status: ''}
   
   constructor(
     private pedidoService: PedidoService,
-    private toastController: ToastController
+    private toastController: ToastController,
+    private storageService: StorageService,
   ) { addIcons({trash})}
 
   ngOnInit() {
-    this.getPedidos(this.usuarioId);
+    this.obtenerUserId();
+    setTimeout(() =>{
+      this.getPedidos(this.usuarioId);
+    },);
+    //this.getPedidos(this.usuarioId);
   }
 
   ionViewWillEnter(){
+    this.obtenerUserId();
     this.getPedidos(this.usuarioId);
+    
   }
+
+  
+
+  // ionViewWillEnter(){
+  //   this.getPedidos(this.usuarioId);
+  // }
+
   getPedidos(usuarioId: any){
     this.pedidoService.getPedidosByUsuarioId(usuarioId).subscribe(
       (response) => {
-        this.pedidos = response;
+        this.pedidos = response.map((pedido) => {
+          return {
+            ...pedido,
+            fecha: format(new Date(pedido.fecha), 'dd/MM/yyyy HH:mm')
+          };
+        });
         this.separarPedidos();
+        this.loaded = true;
       },
       (error) => {
         console.error('Error al obtener los pedidos', error);
@@ -73,6 +96,11 @@ export class PedidosPage implements OnInit {
         this.presentToast(error.error.message);
       }
     )
+  }
+
+
+  async obtenerUserId(){
+    this.usuarioId = parseInt(await this.storageService.read('userId'));
   }
 
   async presentToast(message: string) {

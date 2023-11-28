@@ -55,6 +55,7 @@ export class RealizarPedidoComponent  implements OnInit {
     this.pedidoService.crearPedido(this.pedido).subscribe(
       (response) => {
         this.close();
+        this.router.navigate(['/home/pedidos']);
       },
       (error) => {
         console.error('Error al hacer el pedido', error);

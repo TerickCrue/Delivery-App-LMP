@@ -8,54 +8,38 @@ import { AuthService } from './auth.service';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanActivate, CanLoad {
+export class AuthGuard implements CanActivate {
 
   constructor(
-    private http: HttpClient, 
     private router: Router,
     private authService: AuthService
   ) {}
   
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+  canActivate(): Observable<boolean> | Promise<boolean> | boolean {
+    console.log('AuthGuard#canActivate called');
+
+    if(!this.authService.isAuthenticated()) {
+      this.router.navigate(['/acceso']);
+      return false
+    }
+
+    return this.authService.isAuthenticated();
+    
       const token = localStorage.getItem('token');
       if(!token){
-        this.router.navigate(['/main']);
+        this.router.navigate(['/acceso']);
         return false;
       }
 
       return this.authService.validateToken(token).pipe(
         map(valid => {
           if(!valid) {
-            this.router.navigate(['/main']);
+            this.router.navigate(['/acceso']);
           }
 
           return valid;
         })
       );
-
-  }
-  
-  canLoad(
-    route: Route,
-    segments: UrlSegment[]): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    
-      const token = localStorage.getItem('token');
-    if (!token) {
-      this.router.navigate(['/main']);
-      return false;
-    }
-
-    return this.authService.validateToken(token).pipe(
-      map(valid => {
-        if (!valid) {
-          this.router.navigate(['/main']);
-          return false;
-        }
-        return true;
-      })
-    );
 
   }
 }

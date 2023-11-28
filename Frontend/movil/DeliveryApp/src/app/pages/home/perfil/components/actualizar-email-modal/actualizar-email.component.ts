@@ -8,6 +8,7 @@ import { EmailChange } from 'src/app/shared/dtos/gestion-perfil/email-change';
 import { UsuarioService } from 'src/app/shared/services/http/gestion-usuario/usuario.service';
 import {closeCircleOutline} from 'ionicons/icons'
 import { addIcons } from 'ionicons';
+import { StorageService } from 'src/app/shared/services/storage.service';
 
 @Component({
   selector: 'app-actualizar-email',
@@ -29,7 +30,7 @@ export class ActualizarEmailComponent  implements OnInit {
 
   userEmail: any;
   NewEmail: string = '';
-  pwd: string = '';
+  //pwd: string = '';
   
   request: EmailChange = {emailActual: '', emailNuevo: '', pwd:''};
 
@@ -37,7 +38,8 @@ export class ActualizarEmailComponent  implements OnInit {
     private formBuilder: FormBuilder,
     private usuarioService: UsuarioService,
     private modalCtrl: ModalController,
-    private toastController: ToastController
+    private toastController: ToastController,
+    private storageService: StorageService,
   ) { 
     addIcons({closeCircleOutline})
     this.cambioEmailForm = this.formBuilder.group({
@@ -51,19 +53,22 @@ export class ActualizarEmailComponent  implements OnInit {
 
 
   cambiarEmail() {
-
     if (this.cambioEmailForm.valid) {
+
       this.NewEmail = this.cambioEmailForm.get('nuevoEmail')?.value;
-      this.pwd = this.cambioEmailForm.get('contra')?.value;
+      let pwd = this.cambioEmailForm.get('contra')?.value;
 
       this.request.emailActual = this.userEmail;
       this.request.emailNuevo = this.NewEmail;
-      this.request.pwd = this.pwd;
+      this.request.pwd = pwd;
 
       this.usuarioService.updateEmailUsuario(this.userId, this.request).subscribe(
         (response: any) => {
-          localStorage.setItem('token', response.token);
-          localStorage.setItem('userId', response.id);
+
+          this.storageService.set('userToken', response.token);
+          this.storageService.set('userId', response.id);
+          //localStorage.setItem('token', response.token);
+          //localStorage.setItem('userId', response.id);
           this.presentToast("Email actualizado");
 
         },

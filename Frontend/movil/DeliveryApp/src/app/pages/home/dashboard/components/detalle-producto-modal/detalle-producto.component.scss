@@ -1,4 +1,10 @@
 
+.img-producto{
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
 .cantidad{
     text-align: center;
 }
@@ -6,7 +12,7 @@
     align-items: center;
     
     ion-button {
-        --color: blue;
+        --color: #FBA15B;
         --border-style: solid;
         --border-width: 0px;
         //--padding-start: 20px;

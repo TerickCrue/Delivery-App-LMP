@@ -14,6 +14,7 @@ import { trophyOutline,
   logOutOutline,
 } from 'ionicons/icons'
 import { addIcons } from 'ionicons';
+import { StorageService } from 'src/app/shared/services/storage.service';
 
 @Component({
   selector: 'app-perfil',
@@ -24,13 +25,15 @@ import { addIcons } from 'ionicons';
 })
 export class PerfilPage implements OnInit {
 
-  usuarioId = parseInt(localStorage.getItem('userId') || '', 10);
+  //uasuarioId = parseInt(localStorage.getItem('userId') || '', 10);
+  usuarioId: number; //parseInt(await this.storageService.read('userId'));
   usuario: any;
 
   constructor(
     private usuarioService: UsuarioService,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private storageService: StorageService,
   ){ addIcons({
       trophyOutline, 
       heartOutline, 
@@ -42,15 +45,20 @@ export class PerfilPage implements OnInit {
     }
 
   ngOnInit() {
-    this.obtenerInfoUsuario();
 
   }
 
   ionViewWillEnter(){
-    this.obtenerInfoUsuario();
+    this.obtenerUserId().then( 
+      res => {
+        this.obtenerInfoUsuario();
+      }
+      
+    )
   }
 
   obtenerInfoUsuario(){
+    console.log(this.usuarioId);
     this.usuarioService.getUsuarioById(this.usuarioId).subscribe(
       (response: any) => {
         this.usuario = response;
@@ -63,6 +71,10 @@ export class PerfilPage implements OnInit {
 
   editarInfo() {
     this.router.navigate(['home/detalles-perfil', this.usuarioId]);
+  }
+
+  async obtenerUserId(){
+    this.usuarioId = parseInt(await this.storageService.read('userId'));
   }
 
   cerrarSesion(){

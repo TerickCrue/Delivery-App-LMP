@@ -6,6 +6,7 @@ import { Router, RouterModule} from '@angular/router';
 import { NegocioService } from 'src/app/shared/services/http/gestion-negocio/negocio.service';
 import {cart} from 'ionicons/icons'
 import { addIcons } from 'ionicons';
+import { StorageService } from 'src/app/shared/services/storage.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -16,21 +17,36 @@ import { addIcons } from 'ionicons';
 })
 export class DashboardPage implements OnInit {
 
-  usuarioId = parseInt(localStorage.getItem('userId') || '', 10);
+  usuarioId: number; //= parseInt(localStorage.getItem('userId') || '', 10);
 
   listaNegocios: any[] = [];
+  loaded: boolean = false;
 
-  constructor(private negocioService: NegocioService, private router: Router) { addIcons({cart})}
+  constructor(
+    private negocioService: NegocioService, 
+    private router: Router,
+    private storageService: StorageService,
+  ) { addIcons({cart})}
 
   
   ngOnInit() {
-    this.obtenerNegocios();
+    this.obtenerUserId();
+    setTimeout( () => {
+      this.obtenerNegocios();
+    }, 1000);
+
+    //this.obtenerNegocios();
+  }
+
+  ionViewWillEnter(){
+    this.obtenerUserId();
   }
 
   obtenerNegocios() {
     this.negocioService.getAllNegocios().subscribe(
       (response: any) => {
         this.listaNegocios = response;
+        this.loaded = true;
       },
       (error) => {
         console.error('Error al obtener la lista de negocios:', error);
@@ -47,9 +63,12 @@ export class DashboardPage implements OnInit {
   verCarritos() {
     //arreglar
     //this.router.navigate(['home/dashboard/carritos', this.usuarioId]);
-
     this.router.navigate(['home/carritos', this.usuarioId]);
 
+  }
+
+  async obtenerUserId(){
+    this.usuarioId = parseInt(await this.storageService.read('userId'));
   }
 
   
