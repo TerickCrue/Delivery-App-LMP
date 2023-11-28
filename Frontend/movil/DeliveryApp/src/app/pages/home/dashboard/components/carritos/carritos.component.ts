@@ -40,11 +40,11 @@ export class CarritosComponent  implements OnInit {
 
   ngOnInit() {
     this.obtenerUserId();
-    setTimeout(() => {
-      this.obtenerCarritos();
-    }, 1000);
+    // setTimeout(() => {
+    //   this.obtenerCarritos();
+    // }, 1000);
     
-    //this.obtenerCarritos();
+    this.obtenerCarritos();
   }
 
   ionViewWillEnter(){

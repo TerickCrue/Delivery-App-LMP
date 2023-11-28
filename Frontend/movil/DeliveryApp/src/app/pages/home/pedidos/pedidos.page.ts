@@ -38,11 +38,11 @@ export class PedidosPage implements OnInit {
   ) { addIcons({trash})}
 
   ngOnInit() {
-    this.obtenerUserId();
-    setTimeout(() =>{
-      this.getPedidos(this.usuarioId);
-    },);
-    //this.getPedidos(this.usuarioId);
+    // this.obtenerUserId();
+    // setTimeout(() =>{
+    //   this.getPedidos(this.usuarioId);
+    // },);
+    this.getPedidos(this.usuarioId);
   }
 
   ionViewWillEnter(){
