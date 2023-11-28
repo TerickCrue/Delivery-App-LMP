@@ -2,11 +2,11 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { CarritoConProductos } from '../../dtos/gestion-carritos/carrito-con-productos';
-import { CarritoResponse } from '../../dtos/gestion-carritos/carrito-response';
-import { CarritoProductoResponse } from '../../dtos/gestion-carritos/carrito-producto-response';
-import { CarritoRequest } from '../../dtos/gestion-carritos/carrito-request';
-import { CarritoProductoRequest } from '../../dtos/gestion-carritos/carrito-producto-request';
+import { CarritoConProductos } from '../../../dtos/gestion-carritos/carrito-con-productos';
+import { CarritoResponse } from '../../../dtos/gestion-carritos/carrito-response';
+import { CarritoProductoResponse } from '../../../dtos/gestion-carritos/carrito-producto-response';
+import { CarritoRequest } from '../../../dtos/gestion-carritos/carrito-request';
+import { CarritoProductoRequest } from '../../../dtos/gestion-carritos/carrito-producto-request';
 
 @Injectable({
   providedIn: 'root'

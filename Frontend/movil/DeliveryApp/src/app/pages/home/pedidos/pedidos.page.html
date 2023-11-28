@@ -5,88 +5,207 @@
 </ion-header>
 
 <ion-content>
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title>Pedidos activos</ion-card-title>
-    </ion-card-header>
+  <div *ngIf="loaded">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Pedidos activos</ion-card-title>
+      </ion-card-header>
 
-    <ion-card-content>
-      <ion-card *ngFor="let pedido of pedidosActivos">
-        <ion-card-header>
-          <ion-button class  = "eliminar" fill="clear" (click) = "eliminarPedido(pedido.id)">
-            <ion-icon name="trash"></ion-icon>
-          </ion-button>
-          <ion-card-title>
-            <ion-item [routerLink]="['/detalle-negocio', pedido.businessId]">
-            <ion-thumbnail class = "imagenNegocio">
-              <ion-img [src]="pedido.imagenNegocio"></ion-img>
-            </ion-thumbnail>
-            <ion-label>
-              <h2>
-                {{ pedido.nombreNegocio }}
-              </h2>
-              <h2>Estado: {{ pedido.status }}</h2>
-            </ion-label>
-          </ion-item>
-          </ion-card-title>
-        </ion-card-header>
-
-        <ion-card-content>
-          <ion-list>
-            <ion-item *ngFor="let producto of pedido.productos">
+      <ion-card-content>
+        <ion-card *ngFor="let pedido of pedidosActivos">
+          <ion-card-header>
+            <div class="header">
+              <h2>Pedido <span>{{pedido.status}}</span></h2>
+              <ion-button fill="clear" (click)="eliminarPedido(pedido.id)">
+                <ion-icon name="trash"></ion-icon>
+              </ion-button>
+            </div>
+            <ion-item [routerLink]="['/home/detalle-negocio', pedido.businessId]">
+              <ion-thumbnail class = "imagenNegocio">
+                <ion-img [src]="pedido.imagenNegocio"></ion-img>
+              </ion-thumbnail>
               <ion-label>
-              <h2>{{ producto.nombreProducto }}</h2>>
-              <ion-note>Cantidad: {{ producto.cantidad }}</ion-note>
-              <h2>MX${{ producto.precioSubtotal }}</h2>
+                <h1>
+                  {{ pedido.nombreNegocio }}
+                </h1>
               </ion-label>
-              <ion-avatar slot="end">
-                <img [src]="producto.imagenUrl">
-              </ion-avatar>
             </ion-item>
-          </ion-list>
+          </ion-card-header>
 
-          <ion-label>Total: MX${{ pedido.total }}</ion-label>
-        </ion-card-content>
-      </ion-card>
-    </ion-card-content>
-  </ion-card>
+          <ion-card-content>
+            <ion-card class="lista-productos">
+              <ion-list>
+                <ion-item *ngFor="let producto of pedido.productos">
+                  <ion-label>
+                  <h2>{{ producto.nombreProducto }}</h2>>
+                  <ion-note>Cantidad: {{ producto.cantidad }}</ion-note>
+                  <h2>MX${{ producto.precioSubtotal }}</h2>
+                  </ion-label>
+                  <ion-thumbnail slot="end">
+                    <img [src]="producto.imagenUrl">
+                  </ion-thumbnail>
+                </ion-item>
+              </ion-list>
+            </ion-card>
+            
+            <div class="fecha"><h3>{{pedido.fecha}}</h3></div>
+            <div class="total"><h2>Total: MX${{ pedido.total }}</h2></div>
+          </ion-card-content>
 
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title>Pedidos inactivos</ion-card-title>
-    </ion-card-header>
+        </ion-card>
+      </ion-card-content>
+    </ion-card>
 
-    <ion-card-content>
-      <ion-card *ngFor="let pedido of pedidosInactivos">
-        <ion-card-header>
-          <ion-card-title>
-            <ion-avatar slot="start">
-              <img [src]="pedido.imagenNegocio" alt="Foto del negocio">
-            </ion-avatar>
-            <ion-router-link [routerLink]="['/detalle-negocio', pedido.businessId]">
-              {{ pedido.nombreNegocio }}
-            </ion-router-link>
-            <ion-label>Estado: {{ pedido.status }}</ion-label>
-          </ion-card-title>
-        </ion-card-header>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Pedidos inactivos</ion-card-title>
+      </ion-card-header>
 
-        <ion-card-content>
-          <ion-list>
-            <ion-item *ngFor="let producto of pedido.productos">
-              <ion-avatar slot="start">
-                <img [src]="producto.imagenUrl" alt="Foto del producto">
-              </ion-avatar>
-              <ion-label>{{ producto.nombreProducto }}</ion-label>
-              <ion-label>Cantidad: {{ producto.cantidad }}</ion-label>
-              <ion-label>MX${{ producto.precioSubtotal }}</ion-label>
+      <ion-card-content>
+        <ion-card *ngFor="let pedido of pedidosInactivos">
+          <ion-card-header>
+            <div class="header">
+              <h2>Pedido <span>{{pedido.status}}</span></h2>
+            </div>
+            <ion-item [routerLink]="['/home/detalle-negocio', pedido.businessId]">
+              <ion-thumbnail class = "imagenNegocio">
+                <ion-img [src]="pedido.imagenNegocio"></ion-img>
+              </ion-thumbnail>
+              <ion-label>
+                <h1>
+                  {{ pedido.nombreNegocio }}
+                </h1>
+              </ion-label>
             </ion-item>
-          </ion-list>
-          <ion-item>
-            <ion-label>Total: MX${{ pedido.total }}</ion-label>
-            <ion-label>Fecha: {{ pedido.fecha }}</ion-label>
-          </ion-item>
-        </ion-card-content>
-      </ion-card>
-    </ion-card-content>
-  </ion-card>
+          </ion-card-header>
+
+          <ion-card-content>
+            <ion-card class="lista-productos">
+              <ion-list>
+                <ion-item *ngFor="let producto of pedido.productos">
+                  <ion-label>
+                    <h2>{{ producto.nombreProducto }}</h2>>
+                    <ion-note>Cantidad: {{ producto.cantidad }}</ion-note>
+                    <h2>MX${{ producto.precioSubtotal }}</h2>
+                  </ion-label>
+                  <ion-thumbnail slot="end">
+                    <img [src]="producto.imagenUrl">
+                  </ion-thumbnail>
+                </ion-item>
+              </ion-list>
+            </ion-card>
+            
+            <div class="fecha"><h3>{{pedido.fecha}}</h3></div>
+            <div class="total"><h2>Total: MX${{ pedido.total }}</h2></div>
+          </ion-card-content>
+
+        </ion-card>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <!--skeleton-->
+  <div *ngIf="!loaded">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title><ion-skeleton-text animated style="width: 40%;"></ion-skeleton-text></ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-card *ngFor="let item of [1,2,3,4,5]">
+          <ion-card-header>
+            <div class="header">
+              <h2><ion-skeleton-text animated style="width: 100px;"></ion-skeleton-text></h2>
+            </div>
+            <ion-item>
+              <ion-thumbnail class = "imagenNegocio">
+                <ion-skeleton-text animated></ion-skeleton-text>
+              </ion-thumbnail>
+              <ion-label>
+                <h1>
+                  <ion-skeleton-text animated style="width: 100%; height: 25px;"></ion-skeleton-text>
+                </h1>
+              </ion-label>
+            </ion-item>
+          </ion-card-header>
+
+          <ion-card-content>
+            <ion-card class="lista-productos">
+              <ion-list>
+                <ion-item *ngFor="let item of [1,2,3]">
+                  <ion-label>
+                    <h2><ion-skeleton-text animated style="width: 80%;"></ion-skeleton-text></h2>
+                    <ion-note><ion-skeleton-text animated style="width: 50%;"></ion-skeleton-text></ion-note>
+                    <h2><ion-skeleton-text animated style="width: 30%;"></ion-skeleton-text></h2>
+                  </ion-label>
+                  <ion-thumbnail slot="end">
+                    <ion-skeleton-text animated></ion-skeleton-text>
+                  </ion-thumbnail>
+                </ion-item>
+              </ion-list>
+            </ion-card>
+            
+            <div class="fecha">
+              <h3><ion-skeleton-text animated style="width: 30%;"></ion-skeleton-text></h3>
+            </div>
+            <div class="total">
+              <h2><ion-skeleton-text animated style="width: 80%; height: 20px;"></ion-skeleton-text></h2>
+            </div>
+          </ion-card-content>
+
+        </ion-card>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title><ion-skeleton-text animated style="width: 40%;"></ion-skeleton-text></ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-card *ngFor="let item of [1,2,3]">
+          <ion-card-header>
+            <div class="header">
+              <h2><ion-skeleton-text animated style="width: 100px;"></ion-skeleton-text></h2>
+            </div>
+            <ion-item>
+              <ion-thumbnail class = "imagenNegocio">
+                <ion-skeleton-text animated></ion-skeleton-text>
+              </ion-thumbnail>
+              <ion-label>
+                <h1>
+                  <ion-skeleton-text animated style="width: 100%; height: 25px;"></ion-skeleton-text>
+                </h1>
+              </ion-label>
+            </ion-item>
+          </ion-card-header>
+
+          <ion-card-content>
+            <ion-card class="lista-productos">
+              <ion-list>
+                <ion-item *ngFor="let item of [1,2,3,4]">
+                  <ion-label>
+                    <h2><ion-skeleton-text animated style="width: 80%;"></ion-skeleton-text></h2>
+                    <ion-note><ion-skeleton-text animated style="width: 50%;"></ion-skeleton-text></ion-note>
+                    <h2><ion-skeleton-text animated style="width: 30%;"></ion-skeleton-text></h2>
+                  </ion-label>
+                  <ion-thumbnail slot="end">
+                    <ion-skeleton-text animated></ion-skeleton-text>
+                  </ion-thumbnail>
+                </ion-item>
+              </ion-list>
+            </ion-card>
+            
+            <div class="fecha">
+              <h3><ion-skeleton-text animated style="width: 30%;"></ion-skeleton-text></h3>
+            </div>
+            <div class="total">
+              <h2><ion-skeleton-text animated style="width: 80%; height: 20px;"></ion-skeleton-text></h2>
+            </div>
+          </ion-card-content>
+
+        </ion-card>
+      </ion-card-content>
+    </ion-card>
+  </div>
 </ion-content>

@@ -4,7 +4,7 @@ import { IonicModule } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
 import { PedidoRequest } from 'src/app/shared/dtos/gestion-pedido/pedido-request';
-import { PedidoService } from 'src/app/shared/http/gestion-negocio/pedido.service';
+import { PedidoService } from 'src/app/shared/services/http/gestion-negocio/pedido.service';
 import { FormsModule } from '@angular/forms';
 import {closeCircleOutline} from 'ionicons/icons'
 import { addIcons } from 'ionicons';
@@ -55,6 +55,7 @@ export class RealizarPedidoComponent  implements OnInit {
     this.pedidoService.crearPedido(this.pedido).subscribe(
       (response) => {
         this.close();
+        this.router.navigate(['/home/pedidos']);
       },
       (error) => {
         console.error('Error al hacer el pedido', error);

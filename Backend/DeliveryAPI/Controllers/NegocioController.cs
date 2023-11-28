@@ -29,7 +29,7 @@ public class NegocioController : ControllerBase
     [HttpGet("{id}")]
     public async Task<IActionResult> GetNegocioById(int id)
     {
-        var negocio = await _negocioService.GetById(id);
+        var negocio = await _negocioService.GetDtoById(id);
         if (negocio is null)
             return NegocioNotFound(id);
 

@@ -1,12 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { IonicModule, ModalController } from '@ionic/angular';
-import { CarritoService } from 'src/app/shared/http/gestion-negocio/carrito.service';
+import { CarritoService } from 'src/app/shared/services/http/gestion-negocio/carrito.service';
 import { RealizarPedidoComponent } from '../realizar-pedido-modal/realizar-pedido.component';
-import {trash} from 'ionicons/icons'
+import {trash, cart} from 'ionicons/icons'
 import { addIcons } from 'ionicons';
+import { StorageService } from 'src/app/shared/services/storage.service';
 
 @Component({
   selector: 'app-carritos',
@@ -17,22 +18,37 @@ import { addIcons } from 'ionicons';
     IonicModule, 
     CommonModule,
     FormsModule,
+    RouterLink,
+    
   ]
 })
 export class CarritosComponent  implements OnInit {
 
-  usuarioId = parseInt(localStorage.getItem('userId') || '', 10);
+  usuarioId: number; //= parseInt(localStorage.getItem('userId') || '', 10);
   carritos: any[] = [];
   respuesta: any;
+  loaded: boolean = false;
+  noCarts: boolean = false;
 
   constructor(
     private carritoService: CarritoService,
     private router: Router,
     private modalCtrl: ModalController,
+    private storageService: StorageService,
 
-  ) { addIcons({trash}) }
+  ) { addIcons({trash, cart}) }
 
   ngOnInit() {
+    this.obtenerUserId();
+    setTimeout(() => {
+      this.obtenerCarritos();
+    }, 1000);
+    
+    //this.obtenerCarritos();
+  }
+
+  ionViewWillEnter(){
+    this.obtenerUserId();
     this.obtenerCarritos();
   }
 
@@ -40,6 +56,8 @@ export class CarritosComponent  implements OnInit {
     this.carritoService.getCarritosOfUsuario(this.usuarioId).subscribe(
       (response: any) => {
         this.carritos = response;
+        this.loaded = true;
+        this.noCarts = !(this.carritos.length > 0);
       },
       (error) => {
         console.error('Error al obtener la lista de carritos:', error);
@@ -60,22 +78,26 @@ export class CarritosComponent  implements OnInit {
     );
   }
 
-  editarCarrito(carritoId: number){
+  // editarCarrito(carritoId: number){
 
-    this.carritoService.deleteCarrito(carritoId).subscribe(
-      (response: any) => {
-        this.respuesta = response;
-        this.obtenerCarritos();
-      },
-      (error) => {
-        console.error('Error al eliminar el carrito', error)
-      }
-    );
-  }
+  //   this.carritoService.deleteCarrito(carritoId).subscribe(
+  //     (response: any) => {
+  //       this.respuesta = response;
+  //       this.obtenerCarritos();
+  //     },
+  //     (error) => {
+  //       console.error('Error al eliminar el carrito', error)
+  //     }
+  //   );
+  // }
 
   hacerPedido(negocioId: number, carritoId: number, total: any, nombreNegocio: string){
     
     this.openPedidoModal(negocioId, carritoId, total, nombreNegocio);
+  }
+
+  async obtenerUserId(){
+    this.usuarioId = parseInt(await this.storageService.read('userId'));
   }
 
   async openPedidoModal(negocioId: number, carritoId: number, total: any, nombreNegocio: string){
@@ -89,7 +111,6 @@ export class CarritosComponent  implements OnInit {
         nombreNegocio: nombreNegocio
       }
     });
-    console.error(carritoId);
 
     return await modal.present();
   }

@@ -1,38 +1,43 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="back"></ion-back-button>
-    </ion-buttons>
-    <ion-title>Login</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
   <div class="background-image"></div>
   <div class="content">
-    <ion-card class="form">
+    <ion-card>
       <ion-card-header>
-        <ion-card-title>Login</ion-card-title>
+        <ion-card-title>Inicia sesión</ion-card-title>
       </ion-card-header>
 
       <ion-card-content>
         <form [formGroup]="loginForm" (ngSubmit)="login()">
           <ion-list>
             <ion-item>
-              <ion-label position="floating">Email</ion-label>
-              <ion-input formControlName="email" type="email"></ion-input>
+              <ion-input 
+                label="Email" 
+                labelPlacement="floating" 
+                formControlName="email" 
+                type="email"
+                email
+                errorText="Ingrese un Email válido">
+              </ion-input>
             </ion-item>
             
             <ion-item>
-              <ion-label position="floating">Contraseña</ion-label>
-              <ion-input formControlName="password" type="password"></ion-input>
+              <ion-input 
+                label="Contraseña" 
+                labelPlacement="floating" 
+                formControlName="password" 
+                type="password">
+              </ion-input>
             </ion-item>
           </ion-list>
           <div class="button-container">
-            <ion-button expand="full" type="submit" [disabled]="loginForm.invalid">Iniciar sesión</ion-button>
+            <ion-button  shape="round" expand="full" type="submit" [disabled]="loginForm.invalid">Iniciar sesión</ion-button>
           </div>
         </form>
       </ion-card-content>
+      <div class="link-registro"><a routerLink="/acceso/register">Registrarme</a></div>
+      
     </ion-card>
+    
+    
 </div>
 </ion-content>

@@ -1,9 +1,9 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>Pedido</ion-title>
-    <ion-buttons slot="end">
+    <ion-buttons slot="start">
       <ion-button (click)="close()">
-        <ion-icon name="close-circle-outline"></ion-icon>
+        <ion-icon size="large" name="close-circle-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
@@ -39,7 +39,7 @@
     </ion-row>
     <ion-row>
       <ion-col>
-        <ion-button expand="full" (click)="realizarPedido()">Pedir</ion-button>
+        <ion-button shape="round" expand="full" (click)="realizarPedido()">Pedir</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>

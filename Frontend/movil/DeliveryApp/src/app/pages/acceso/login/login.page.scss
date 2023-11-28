@@ -9,31 +9,12 @@
     filter: brightness(0.5);
 }
 
-.content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 100vh;
-    color: white;
-    text-align: center;
+
+.content{
+    margin-top: 80%;
 }
 
-// .form{
-//     background: transparent;
-//     color: white;
-
-//     form{
-//         background-color: transparent;
-//         color: white;
-//         ion-item{
-//             --background: transparent;
-//             color: white;
-//         }
-
-//         ion-list{
-//             background-color: transparent;
-//         }
-//     }
-
-    
-// }
+.link-registro{
+    text-align: center;
+    padding-bottom: 20px;
+}

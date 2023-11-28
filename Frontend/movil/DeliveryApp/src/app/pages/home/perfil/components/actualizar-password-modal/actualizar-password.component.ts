@@ -4,7 +4,7 @@ import { IonicModule } from '@ionic/angular';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ModalController, ToastController } from '@ionic/angular';
 import { PasswordChange } from 'src/app/shared/dtos/gestion-perfil/password-change';
-import { UsuarioService } from 'src/app/shared/http/gestion-usuario/usuario.service';
+import { UsuarioService } from 'src/app/shared/services/http/gestion-usuario/usuario.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import {closeCircleOutline} from 'ionicons/icons'
 import { addIcons } from 'ionicons';

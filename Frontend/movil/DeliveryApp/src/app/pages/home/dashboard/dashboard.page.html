@@ -1,28 +1,53 @@
 <ion-header> 
   <ion-toolbar>
-    <ion-title>Lista de Negocios</ion-title>
+    <ion-title>
+      <span>Delivery</span>
+      <span style="color: #F18836 ;"> App</span>
+    </ion-title>
     <ion-buttons slot="end">
-      <ion-button (click)="verCarritos()">
-        <ion-icon name="cart"></ion-icon>
+      <ion-button class="carritos" (click)="verCarritos()">
+        <ion-icon slot="icon-only" size="large" name="cart"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-grid>
-    <ion-row>
-      <ion-col size="12" size-md="6" size-lg="4" *ngFor="let negocio of listaNegocios" >
-        <ion-card (click)="verProductos(negocio.id)">
-          <ion-img [src]="negocio.fotoPerfilUrl"></ion-img>
-          <ion-card-header>
-            <ion-card-title>{{ negocio.nombre }}</ion-card-title>
-          </ion-card-header>
-          <ion-card-content>
-            <p>{{ negocio.descripcion }}</p>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+  <div *ngIf="loaded">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="12" size-md="6" size-lg="4" *ngFor="let negocio of listaNegocios" >
+          <ion-card (click)="verProductos(negocio.id)">
+            <ion-img class="imagen-perfil" [src]="negocio.fotoPerfilUrl"></ion-img>
+            <ion-card-header>
+              <ion-card-title>{{ negocio.nombre }}</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <p>{{ negocio.descripcion }}</p>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <!--skeleton-->
+  <div *ngIf="!loaded">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="12" size-md="6" size-lg="4" *ngFor="let item of [1,2,3,4,5,6,7,8,9,10]" >
+          <ion-card>
+            <ion-skeleton-text class="imagen-perfil"></ion-skeleton-text>
+            <ion-card-header>
+              <ion-card-title><ion-skeleton-text animated style="width: 30%;"></ion-skeleton-text></ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <p><ion-skeleton-text animated style="width: 40%;"></ion-skeleton-text></p>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
 </ion-content>

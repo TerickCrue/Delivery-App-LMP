@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { Router, RouterLink} from '@angular/router';
+import { AuthService } from 'src/app/auth/auth.service';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'app-acceso',
@@ -13,10 +15,22 @@ import { Router, RouterLink} from '@angular/router';
 })
 export class AccesoPage implements OnInit {
 
-  constructor() { }
+  
+
+  constructor( private router: Router, private authService: AuthService) { }
 
   ngOnInit() {
+    this.usuarioLogeado();
   }
+
+  usuarioLogeado(){
+    let res = this.authService.isAuthenticated();
+
+    if(res){
+      this.router.navigate(['/home']);
+    }
+  }
+  
 
 
 }

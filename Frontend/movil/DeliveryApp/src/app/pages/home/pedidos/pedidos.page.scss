@@ -1,12 +1,38 @@
+
+.header{
+    display: flex;
+    align-items: center;
+
+    ion-button{
+        margin-left: 40%;
+        color: red;
+    }
+}
+
 ion-item{
 
     ion-thumbnail{
         margin-right: 20px;
+        --border-radius: 15px
     }
 }
 
-.eliminar{
-    padding-left: 80%;
-    margin-top: 30px;
-    color: red;
+.lista-productos{
+    ion-thumbnail{
+        width: 50px;
+        height: 50px;
+    }
+}
+
+.total{
+    padding-left: 50%;
+    h2{
+        font-weight: bold;
+    }
+}
+
+.fecha{
+    h3{
+        font-size: smaller;
+    };
 }

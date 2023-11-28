@@ -11,10 +11,19 @@
     <ion-card-subtitle>¡Hola!</ion-card-subtitle>
     <ion-card-title>{{usuario?.nombre}}</ion-card-title>
   </ion-card-header>
+
   <ion-card-content>
-    <ion-avatar class = "avatar">
-      <img [src]="usuario?.fotoPerfilUrl" />
+    
+    <!--Si el usuario tiene imagen-->
+    <ion-avatar *ngIf="!usuario?.fotoPerfilUrl" class = "avatar">
+      <img src="https://ionicframework.com/docs/img/demos/avatar.svg" />
     </ion-avatar>
+
+    <!--Si no existe una imagen-->
+    <ion-avatar *ngIf="usuario?.fotoPerfilUrl" class = "avatar">
+      <img [src]="usuario.fotoPerfilUrl" />
+    </ion-avatar>
+
     <ion-list>
       <ion-item button detail="true">
         <ion-icon name="trophy-outline" slot = "start"></ion-icon>
@@ -58,12 +67,8 @@
           Cerrar sesión
         </ion-label>
       </ion-item>
-
-
     </ion-list>
-
   </ion-card-content>
-
 </ion-card>
 </ion-content>
 

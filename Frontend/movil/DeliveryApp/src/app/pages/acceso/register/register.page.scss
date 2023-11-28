@@ -9,13 +9,13 @@
     filter: brightness(0.5);
 }
 
+.content{
+    margin-top: 50%;
+}
 
-.content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 100vh;
-    color: white;
+.link-login{
     text-align: center;
-  }
+    padding-bottom: 20px;
+}
+
 

@@ -25,6 +25,19 @@ public class NegocioService
         return await _context.Negocios.FindAsync(id);
     }
 
+    public async Task<NegocioDtoOut?> GetDtoById(int id)
+    {
+        return await _context.Negocios.Where(n => n.Id == id).Select(n => new NegocioDtoOut()
+        {
+            BannerUrl = n.BannerUrl,
+            FotoPerfilUrl = n.FotoPerfilUrl,
+            Descripcion = n.Descripcion,
+            Nombre = n.Nombre,
+            Id = n.Id,
+            FacultadNombre = n.Facultad.Nombre
+        }).SingleOrDefaultAsync();
+    }
+
     public async Task<IEnumerable<Negocio>> GetByFacultad(int faculty)
     {
         return await _context.Negocios.Where(n => n.FacultadId == faculty).ToListAsync();

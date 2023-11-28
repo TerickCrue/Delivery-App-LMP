@@ -3,15 +3,16 @@ import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { IonicModule, ToastController } from '@ionic/angular';
 import { UserRegister } from 'src/app/shared/dtos/seguridad/user-register';
-import { Router} from '@angular/router';
+import { Router, RouterLink} from '@angular/router';
 import { AuthService } from 'src/app/auth/auth.service';
+import { RegisterService } from 'src/app/shared/services/http/seguridad/register.service';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.page.html',
   styleUrls: ['./register.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule, ReactiveFormsModule],
+  imports: [IonicModule, CommonModule, FormsModule, ReactiveFormsModule, RouterLink],
   providers : [AuthService]
 })
 export class RegisterPage implements OnInit {
@@ -23,7 +24,8 @@ export class RegisterPage implements OnInit {
   constructor(
     private formBuilder: FormBuilder, 
     private router: Router,
-    private authService: AuthService,
+    private registerService: RegisterService,
+    //private authService: AuthService,
     private toastController: ToastController
   ) { }
 
@@ -53,7 +55,7 @@ export class RegisterPage implements OnInit {
   }
 
   Registrar(datos: UserRegister){
-    this.authService.register(datos).subscribe(
+    this.registerService.register(datos).subscribe(
       (response: any) => {
         console.log(response);
         this.router.navigateByUrl('/login');
