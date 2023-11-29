@@ -24,22 +24,5 @@ export class AuthGuard implements CanActivate {
     }
 
     return this.authService.isAuthenticated();
-    
-      const token = localStorage.getItem('token');
-      if(!token){
-        this.router.navigate(['/acceso']);
-        return false;
-      }
-
-      return this.authService.validateToken(token).pipe(
-        map(valid => {
-          if(!valid) {
-            this.router.navigate(['/acceso']);
-          }
-
-          return valid;
-        })
-      );
-
   }
 }

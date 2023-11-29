@@ -25,8 +25,7 @@ import { StorageService } from 'src/app/shared/services/storage.service';
 })
 export class PerfilPage implements OnInit {
 
-  //uasuarioId = parseInt(localStorage.getItem('userId') || '', 10);
-  usuarioId: number; //parseInt(await this.storageService.read('userId'));
+  usuarioId: number; 
   usuario: any;
 
   constructor(

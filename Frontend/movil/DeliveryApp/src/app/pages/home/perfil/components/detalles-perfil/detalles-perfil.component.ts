@@ -64,6 +64,10 @@ export class DetallesPerfilComponent  implements OnInit {
     this.fotoCambiada = false;
   }
 
+  ionViewDidEnter(){
+    this.obtenerInfo();
+  }
+
   obtenerInfo(){
     this.usuarioService.getUsuarioById(this.usuarioId).subscribe(
       (response:any) => {

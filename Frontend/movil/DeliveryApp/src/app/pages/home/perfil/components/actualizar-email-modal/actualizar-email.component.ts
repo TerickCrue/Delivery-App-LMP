@@ -67,9 +67,8 @@ export class ActualizarEmailComponent  implements OnInit {
 
           this.storageService.set('userToken', response.token);
           this.storageService.set('userId', response.id);
-          //localStorage.setItem('token', response.token);
-          //localStorage.setItem('userId', response.id);
           this.presentToast("Email actualizado");
+          this.close();
 
         },
         (error) => {
