@@ -30,12 +30,12 @@ export class DashboardPage implements OnInit {
 
   
   ngOnInit() {
-    // this.obtenerUserId();
-    // setTimeout( () => {
-    //   this.obtenerNegocios();
-    // }, 1000);
+     this.obtenerUserId();
+     setTimeout( () => {
+       this.obtenerNegocios();
+     }, 500);
 
-    this.obtenerNegocios();
+    //this.obtenerNegocios();
   }
 
   ionViewWillEnter(){

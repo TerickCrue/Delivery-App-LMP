@@ -12,9 +12,11 @@ import { trophyOutline,
   settingsOutline, 
   pencilOutline, 
   logOutOutline,
+  clipboardOutline
 } from 'ionicons/icons'
 import { addIcons } from 'ionicons';
 import { StorageService } from 'src/app/shared/services/storage.service';
+import { NegocioService } from 'src/app/shared/services/http/gestion-negocio/negocio.service';
 
 @Component({
   selector: 'app-perfil',
@@ -30,6 +32,7 @@ export class PerfilPage implements OnInit {
 
   constructor(
     private usuarioService: UsuarioService,
+    private negocioService: NegocioService,
     private router: Router,
     private authService: AuthService,
     private storageService: StorageService,
@@ -40,7 +43,8 @@ export class PerfilPage implements OnInit {
       chatbubblesOutline, 
       settingsOutline, 
       pencilOutline, 
-      logOutOutline,})
+      logOutOutline,
+      clipboardOutline})
     }
 
   ngOnInit() {
@@ -79,6 +83,10 @@ export class PerfilPage implements OnInit {
   cerrarSesion(){
     this.authService.logOut();
     this.router.navigate(['acceso']);
+  }
+
+  mostrarReporte(){
+    this.router.navigate(['home/reporte']);
   }
 
 }

@@ -13,6 +13,7 @@ import { UsuarioService } from 'src/app/shared/services/http/gestion-usuario/usu
 import { UsuarioRequest } from 'src/app/shared/dtos/gestion-perfil/usuario-request';
 import { UtilsService } from 'src/app/shared/services/utils.service';
 import { FirebaseService } from 'src/app/shared/services/firebase.service';
+import { ToastController } from '@ionic/angular/standalone';
 
 
 @Component({
@@ -44,7 +45,8 @@ export class DetallesPerfilComponent  implements OnInit {
     private formBuilder: FormBuilder,
     private usuarioService: UsuarioService,
     private route: ActivatedRoute,
-    private modalCtrl: ModalController
+    private modalCtrl: ModalController,
+    private toastCtrl: ToastController,
     
   ) { addIcons({cameraOutline}) }
 
@@ -83,6 +85,7 @@ export class DetallesPerfilComponent  implements OnInit {
     this.usuarioService.updateUsuario(this.usuarioId, this.usuarioData).subscribe(
       (response:any) => {
         console.log(response)
+        this.presentToast("Información actualizada");
       },
       (error) => {
         console.error('Error al guardar la información')
@@ -146,6 +149,16 @@ export class DetallesPerfilComponent  implements OnInit {
 
       this.enviarInfo();
     }
+  }
+
+  async presentToast(message: string) {
+    const toast = await this.toastCtrl.create({
+      message: message,
+      duration: 1000,
+      position: 'bottom',
+    });
+
+    await toast.present();
   }
 
 
