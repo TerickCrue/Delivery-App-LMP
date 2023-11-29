@@ -5,9 +5,12 @@
 .negocio{
 
     h3{
+        margin-left: 5px;
         font-size: small;
         //font-weight: bold;
     }
     ion-thumbnail{
-        --border-radius: 15px;    }
+        --border-radius: 15px;
+        //--margin-right: 5px;    
+    }
 }

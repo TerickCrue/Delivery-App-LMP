@@ -48,13 +48,13 @@ export class DetalleNegocioComponent  implements OnInit {
     this.obtenerUserId();
     this.negocioId = this.route.snapshot.paramMap.get('negocioId');
 
-    // setTimeout( () => {
-    //   this.obtenerNegocio();
-    //   this.obtenerProductos();
-    // }, 1000);
+     setTimeout( () => {
+       this.obtenerNegocio();
+       this.obtenerProductos();
+     }, 800);
 
-    this.obtenerNegocio();
-    this.obtenerProductos();
+    //this.obtenerNegocio();
+    //this.obtenerProductos();
   }
 
   ionViewWillEnter(){

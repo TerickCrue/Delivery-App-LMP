@@ -38,27 +38,22 @@ export class PedidosPage implements OnInit {
   ) { addIcons({trash})}
 
   ngOnInit() {
-    //this.obtenerUserId();
-    // setTimeout(() =>{
-    //   this.getPedidos(this.usuarioId);
-    // },);
-    //this.getPedidos(this.usuarioId);
-  }
-
-  ionViewWillEnter(){
-    this.obtenerUserId().then(
-      res => {
-        this.getPedidos(this.usuarioId);
-      }
-    );
+    this.obtenerUserId();
+     setTimeout(() =>{
+       this.getPedidos(this.usuarioId);
+     }, 800);
     
   }
 
-  
-
-  // ionViewWillEnter(){
-  //   this.getPedidos(this.usuarioId);
-  // }
+  ionViewWillEnter(){
+    setTimeout(() => {
+      this.obtenerUserId().then(
+        res => {
+          this.getPedidos(this.usuarioId);
+        }
+      );
+    }, 800);
+  }
 
   getPedidos(usuarioId: any){
     this.pedidoService.getPedidosByUsuarioId(usuarioId).subscribe(
