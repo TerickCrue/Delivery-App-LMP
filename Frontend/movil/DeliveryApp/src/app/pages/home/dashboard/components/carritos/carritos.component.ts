@@ -39,17 +39,20 @@ export class CarritosComponent  implements OnInit {
   ) { addIcons({trash, cart}) }
 
   ngOnInit() {
-    this.obtenerUserId();
+    //this.obtenerUserId();
     // setTimeout(() => {
     //   this.obtenerCarritos();
     // }, 1000);
     
-    this.obtenerCarritos();
+    //this.obtenerCarritos();
   }
 
   ionViewWillEnter(){
-    this.obtenerUserId();
-    this.obtenerCarritos();
+    this.obtenerUserId().then(
+      res => {
+        this.obtenerCarritos();
+      }
+    );
   }
 
   obtenerCarritos() {

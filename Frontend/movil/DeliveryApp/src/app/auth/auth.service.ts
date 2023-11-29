@@ -62,25 +62,6 @@ export class AuthService {
         })
       );
     }
-
-    //return token !== null && token !== undefined;
-
-    // const token = localStorage.getItem('token');
-    //   if(!token){
-    //     //this.router.navigate(['/acceso']);
-    //     return false;
-    //   }
-
-    //   return this.validateToken(token).pipe(
-    //     map(valid => {
-    //       if(!valid) {
-    //         return false //this.router.navigate(['/acceso']);
-    //       }
-    //       else{
-    //         return true;
-    //       }
-    //     })
-    //   );
   }
 
 

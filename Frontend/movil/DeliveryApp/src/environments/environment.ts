@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
 
-  baseUrl: "https://localhost:44368/api",
+  //baseUrl: "https://localhost:44368/api",
+  baseUrl: "https://etcr-deliveryapp-api-lmp.azurewebsites.net/api",
   
   firebaseConfig : {
     apiKey: "AIzaSyAUOBryOWP87DXPyCMTpb8ptE4HGUwpQfM",
