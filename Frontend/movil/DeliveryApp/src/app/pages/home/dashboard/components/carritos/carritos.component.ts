@@ -50,7 +50,10 @@ export class CarritosComponent  implements OnInit {
   ionViewWillEnter(){
     this.obtenerUserId().then(
       res => {
-        this.obtenerCarritos();
+        setTimeout(() => {
+          this.obtenerCarritos();
+        }, 500);
+        
       }
     );
   }

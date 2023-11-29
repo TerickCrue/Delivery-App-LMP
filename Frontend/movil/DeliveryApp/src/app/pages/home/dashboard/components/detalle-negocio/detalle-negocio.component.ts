@@ -51,7 +51,7 @@ export class DetalleNegocioComponent  implements OnInit {
      setTimeout( () => {
        this.obtenerNegocio();
        this.obtenerProductos();
-     }, 800);
+     }, 500);
 
     //this.obtenerNegocio();
     //this.obtenerProductos();

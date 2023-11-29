@@ -33,7 +33,7 @@ export class DashboardPage implements OnInit {
      this.obtenerUserId();
      setTimeout( () => {
        this.obtenerNegocios();
-     }, 800);
+     }, 500);
 
     //this.obtenerNegocios();
   }

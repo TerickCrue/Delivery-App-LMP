@@ -41,7 +41,7 @@ export class PedidosPage implements OnInit {
     this.obtenerUserId();
      setTimeout(() =>{
        this.getPedidos(this.usuarioId);
-     }, 800);
+     }, 500);
     
   }
 
@@ -52,7 +52,7 @@ export class PedidosPage implements OnInit {
           this.getPedidos(this.usuarioId);
         }
       );
-    }, 800);
+    }, 500);
   }
 
   getPedidos(usuarioId: any){

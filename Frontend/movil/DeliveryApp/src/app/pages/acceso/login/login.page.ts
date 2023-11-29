@@ -52,7 +52,7 @@ export class LoginPage implements OnInit {
       (response: any) => {
         console.log(response);
         this.storageService.set('userToken', response.token);
-        this.storageService.set('userId', response.id);
+        this.storageService.set('userId', JSON.stringify(response.id));
         //localStorage.setItem('token', response.token);
         //localStorage.setItem('userId', response.id);
         
