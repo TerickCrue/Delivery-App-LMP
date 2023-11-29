@@ -1,0 +1,31 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home/perfil"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Lista de negocios</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="contenedor">
+    <ion-grid>
+      <ion-row>
+        <div class="negocio">
+          <ion-item *ngFor="let negocio of listaNegocios" routerLink="/home/detalle-negocio/{{negocio.id}}">
+            <ion-col size="2">
+              <ion-thumbnail>
+                <img [src]="negocio?.fotoPerfilUrl" alt="">
+              </ion-thumbnail>
+            </ion-col>
+            <ion-col size="4">
+                <h3>{{negocio.nombre}}</h3>
+            </ion-col>
+            <ion-col size="6">
+                <h3>{{negocio.descripcion}}</h3>
+            </ion-col>
+          </ion-item>
+        </div>
+      </ion-row>
+    </ion-grid>
+</div>
+</ion-content>
